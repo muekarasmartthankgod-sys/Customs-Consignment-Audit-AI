@@ -18,7 +18,7 @@ This project automates that workflow using **Multimodal Fusion**:
 The current live environment showcases the **Document Intelligence** capability—extracting critical fields from manifests in seconds.
 
 - **URL:** [Trade Audit AI Application](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
-- **Access Code:** `EXPERT-2026`
+- **Access Code:** `ON RQUEST`
 - **Development Status:** The **Manifest Module** is fully operational for testing. The **Image Analysis Module** (multimodal fusion) is currently in development and accessible via the `audit_engine.py` script in this repository.
 
 ---
