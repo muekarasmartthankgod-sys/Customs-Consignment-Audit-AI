@@ -1,27 +1,34 @@
-# Customs Consignment Audit AI
+# Customs Consignment Audit AI: Multimodal Intelligence
 
-**Smart Thankgod** *Chief Superintendent of Customs* | *MSc Computer Science Researcher — University of York* | *Certified Image Analyst (UK Border Force Trained)*
+**Smart Thankgod** *Chief Superintendent of Customs | MSc Researcher (University of York) | UK Border Force Trained Analyst*
 
 ---
 
-## 🛡️ Operational Impact: Automation vs. Manual Audit
-The core mission of this project is to solve the "Information Overload" in Customs logistics. Manual verification of shipping documents—**Bill of Lading, Packing List, Invoice, CCVO, and Manifests**—is time-intensive and prone to human oversight.
+## 🎯 The Core Mission: Eliminating Manual Friction
+Traditional consignment analysis is hindered by a "Manual Bottleneck." Officers must spend valuable time cross-referencing shipping documents (**Bill of Lading, Packing List, Invoice, CCVO**) against X-ray imagery. 
 
-### ⚡ Speed-to-Intelligence
-This AI framework extracts and cross-references critical data points in **seconds**, a task that traditionally takes officers significantly longer. The system focuses on:
-* **Regulatory Compliance:** HS Codes, Country of Origin, and Country of Dispatch.
-* **Economic Protection:** Unit Price, Total Value of Goods, and Quantity.
-* **Logistics Accuracy:** Gross/Net Weight, Exporter/Importer details, and Unit of Measurement.
+This project replaces manual search with **Multimodal Fusion**. By uploading both the manifest and the image, the system instantly:
+1. **Extracts** critical regulatory data (HS Codes, Value, Weight, Origin, etc.).
+2. **Detects** physical objects within the cargo using **YOLOv8** (Baseline) / **RT-DETR** (Future ViT Benchmark).
+3. **Reasons** between the two data streams using **Gemini 2.0 Flash** to identify fraud, misclassification, or concealment.
 
-## 🚀 Prototype & Live Demo
-- **Current Live Demo:** [Trade Audit AI (Logic Alpha)](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
-- **Demo Scope:** This version demonstrates the **Automated Document Intelligence** module, showing how AI reads and analyzes complex manifest data instantly.
-- **Roadmap:** Integration of the Multimodal Image Analysis module (X-ray scanning) is currently in development.
+## ⚡ Comprehensive Audit Reporting
+The output is not just a "box" or "text"—it is a professional **Comprehensive Audit Report** that compares:
+- **EXPECTED:** Data extracted from manifest (HS Code 8708, Gross Weight 5000kg, etc.)
+- **DETECTED:** Findings from the Object Detection model (Spatial analysis, scale, and classification).
+- **VERDICT:** High-speed reasoning on discrepancies (e.g., "Manifest declares Tyres, but high-density organic shielding detected").
 
-## 🔬 Research Methodology
-* **CNN Baseline:** YOLOv8/YOLO12 utilized for local feature extraction on a **1,230-image augmented dataset** (480 original real-world NII scans).
-* **Transformer Target:** **RT-DETR (ViT)** implementation for global context attention and NMS-free end-to-end detection.
+## 🔬 Technical Roadmap
+* **Vision (YOLOv8):** Currently handling spatial analysis on our **1,230-image augmented dataset**.
+* **Reasoning (Gemini API):** Handling the complex logic of manifest-to-image verification.
+* **Scale (RT-DETR):** Moving toward NMS-free, Global Context Attention for superior overlapping object resolution.
 
-## 📄 Data Availability & Ethics
-**Notice:** This research utilizes a unique dataset of **480 original real-world anonymized X-ray scans** from the Nigeria Customs Service. 
-- **Integrity:** Raw imagery and weights are restricted to protect the "first-to-publish" integrity for upcoming **IEEE journal submission**.
+---
+
+## 📄 Data & Research Integrity
+- **Original Dataset:** 480 real-world anonymized X-ray scans (NCS).
+- **Augmented Dataset:** 1,230 images.
+- **Privacy:** Weights and raw scans are restricted for **IEEE publication** integrity.
+
+## 🤝 Connect
+[LinkedIn](https://www.linkedin.com/in/smart-thankgod-893ab3371) | [Live Logic Demo](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
