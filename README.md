@@ -1,34 +1,32 @@
-# Customs Consignment Audit AI: Multimodal Intelligence
+# Customs Consignment Audit AI
 
-**Smart Thankgod** *Chief Superintendent of Customs | MSc Researcher (University of York) | UK Border Force Trained Analyst*
-
----
-
-## 🎯 The Core Mission: Eliminating Manual Friction
-Traditional consignment analysis is hindered by a "Manual Bottleneck." Officers must spend valuable time cross-referencing shipping documents (**Bill of Lading, Packing List, Invoice, CCVO**) against X-ray imagery. 
-
-This project replaces manual search with **Multimodal Fusion**. By uploading both the manifest and the image, the system instantly:
-1. **Extracts** critical regulatory data (HS Codes, Value, Weight, Origin, etc.).
-2. **Detects** physical objects within the cargo using **YOLOv8** (Baseline) / **RT-DETR** (Future ViT Benchmark).
-3. **Reasons** between the two data streams using **Gemini 2.0 Flash** to identify fraud, misclassification, or concealment.
-
-## ⚡ Comprehensive Audit Reporting
-The output is not just a "box" or "text"—it is a professional **Comprehensive Audit Report** that compares:
-- **EXPECTED:** Data extracted from manifest (HS Code 8708, Gross Weight 5000kg, etc.)
-- **DETECTED:** Findings from the Object Detection model (Spatial analysis, scale, and classification).
-- **VERDICT:** High-speed reasoning on discrepancies (e.g., "Manifest declares Tyres, but high-density organic shielding detected").
-
-## 🔬 Technical Roadmap
-* **Vision (YOLOv8):** Currently handling spatial analysis on our **1,230-image augmented dataset**.
-* **Reasoning (Gemini API):** Handling the complex logic of manifest-to-image verification.
-* **Scale (RT-DETR):** Moving toward NMS-free, Global Context Attention for superior overlapping object resolution.
+**Smart Thankgod** *Chief Superintendent of Customs | MSc Computer Science Researcher — University of York | Certified Image Analyst (UK Border Force Trained)*
 
 ---
 
-## 📄 Data & Research Integrity
-- **Original Dataset:** 480 real-world anonymized X-ray scans (NCS).
-- **Augmented Dataset:** 1,230 images.
-- **Privacy:** Weights and raw scans are restricted for **IEEE publication** integrity.
+## 🎯 The Core Mission: Multimodal Audit Intelligence
+Traditional consignment analysis is hindered by a manual bottleneck. Officers must spend valuable time searching for sensitive fields (HS Code, Weight, Value, Exporter) across multiple documents like the **Bill of Lading, Packing List, Invoice, and CCVO** before analyzing X-ray scans.
+
+This project automates that workflow using **Multimodal Fusion**:
+1. **Intelligence Extraction:** Instantly parses complex shipping documents for regulatory data.
+2. **Spatial Detection:** Utilizes **YOLOv8** (Baseline) and **RT-DETR** (Future ViT Benchmark) to localize physical cargo.
+3. **Cross-Referencing:** A **Gemini 2.0 Flash** reasoning engine compares the extracted manifest against detected visual data to generate a **Comprehensive Audit Report**.
+
+---
+
+## 🚀 Prototype & Live Demo
+The current live environment showcases the **Document Intelligence** capability—extracting critical fields from manifests in seconds.
+
+- **URL:** [Trade Audit AI Application](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
+- **Access Code:** `EXPERT-2026`
+- **Development Status:** The **Manifest Module** is fully operational for testing. The **Image Analysis Module** (multimodal fusion) is currently in development and accessible via the `audit_engine.py` script in this repository.
+
+---
+
+## 🔬 Research & Dataset
+* **Dataset:** 480 original real-world anonymized X-ray scans, augmented to **1,230 images**.
+* **Methodology:** Comparative analysis of CNNs (YOLO) vs. Vision Transformers (RT-DETR) for NII (Non-Intrusive Inspection).
+* **Privacy:** Dataset and weights are restricted to protect research integrity for **IEEE journal submission**.
 
 ## 🤝 Connect
-[LinkedIn](https://www.linkedin.com/in/smart-thankgod-893ab3371) | [Live Logic Demo](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
+- [LinkedIn](https://www.linkedin.com/in/smart-thankgod-893ab3371) | [Email](mailto:muekarasmartthankgod@gmail.com)
