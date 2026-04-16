@@ -1,70 +1,84 @@
 # =============================================================
 # REPOSITORY: Customs-Consignment-Audit-AI
-# DEVELOPER: Smart Thankgod (UK Border Force Trained Analyst)
-# INSTITUTION: MSc Research - University of York
-# PURPOSE: Multimodal X-Ray Classification (YOLOv8) + 
-#          Cognitive Manifest Verification (Gemini)
+# PURPOSE: Multimodal Fusion (YOLO Vision + Gemini Reasoning)
+# GOAL: Generate Comprehensive Audit Reports in Seconds
 # =============================================================
 
 import os
 from google import genai
+from google.genai import types
 from ultralytics import YOLO
 
 # --- CONFIGURATION ---
-# Use environment variables for security
 API_KEY = os.getenv("GEMINI_API_KEY", "YOUR_KEY_HERE")
-STRATEGIC_MODEL = "gemini-2.0-flash" 
-
-# Current Baseline: YOLOv8 
-# Future Benchmark: RT-DETR (for Global Context Attention)
 WEIGHTS_PATH = 'weights/yolov8_best.pt' 
 
 client = genai.Client(api_key=API_KEY)
 
-def run_trade_audit_ai(image_path, expected_manifest):
+def generate_multimodal_audit(image_path, manifest_text):
     """
-    Executes a multimodal audit combining spatial CNN detection 
-    with Vision-Language Model reasoning.
+    The 'Superintendent's Workflow':
+    1. YOLOv8 detects the physical reality.
+    2. Gemini extracts manifest data and cross-references it with detection.
+    3. Produces a final Comprehensive Audit Report.
     """
-    if not os.path.exists(image_path):
-        print(f"Error: Image not found at {image_path}")
-        return
-
-    if not os.path.exists(WEIGHTS_PATH):
-        print(f"Note: Restricted Weights. Researching YOLOv8 vs RT-DETR.")
-        return
-
-    # --- STAGE 1: CNN SPATIAL ANALYSIS ---
-    vision_model = YOLO(WEIGHTS_PATH)
-    results = vision_model.predict(image_path, conf=0.25, imgsz=1024, verbose=False)
+    
+    # --- STAGE 1: VISION (YOLOv8) ---
+    model = YOLO(WEIGHTS_PATH)
+    results = model.predict(image_path, conf=0.25, imgsz=1024, verbose=False)
     
     detections = []
     for box in results[0].boxes:
-        label = vision_model.names[int(box.cls)]
+        label = model.names[int(box.cls)]
         conf = box.conf[0].item()
-        detections.append(f"{label} ({conf:.2f} conf)")
+        detections.append(f"{label} (Confidence: {conf:.2f})")
+    
+    vision_summary = ", ".join(detections) if detections else "No objects localized."
 
-    summary = ", ".join(detections) if detections else "No anomalies detected."
+    # --- STAGE 2: REASONING (GEMINI 2.0 FLASH) ---
+    with open(image_path, 'rb') as f:
+        image_bytes = f.read()
 
-    # --- STAGE 2: COGNITIVE VERIFICATION (UK BORDER FORCE LOGIC) ---
     prompt = f"""
-    SYSTEM: Senior Customs Auditor & Trained Image Analyst.
-    TASK: Formal manifest verification. Compare declared goods against X-ray detections.
-    DATA:
-    - DECLARED (Manifest): {expected_manifest}
-    - DETECTED (X-ray): {summary}
-    RULES: Flag category mismatches as FRAUD and scale inconsistencies as NON-CONFORMITY.
+    ROLE: Senior Customs Auditor (UK Border Force Standard).
+    
+    TASK: Generate a Comprehensive Audit Report.
+    
+    INPUT DATA:
+    1. MANIFEST DATA: {manifest_text}
+    2. YOLOv8 DETECTIONS: {vision_summary}
+    
+    REPORT STRUCTURE:
+    - DATA EXTRACTION: Extract HS Code, Value, Origin, and Weight from manifest.
+    - DISCREPANCY ANALYSIS: Does the X-ray detection match the manifest? 
+    - RISK LEVEL: (Low/Medium/High)
+    - VERDICT: Final recommendation for the officer.
     """
 
     try:
-        response = client.models.generate_content(model=STRATEGIC_MODEL, contents=prompt)
-        print("\n" + "="*55)
-        print("      CUSTOMS CONSIGNMENT AUDIT: OFFICIAL REPORT")
-        print("="*55)
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=[
+                types.Part.from_bytes(data=image_bytes, mime_type="image/jpeg"),
+                prompt
+            ]
+        )
+        
+        print("\n" + "="*60)
+        print("          COMPREHENSIVE CARGO AUDIT REPORT")
+        print("="*60)
         print(response.text)
-        print("="*55)
+        print("="*60)
+
     except Exception as e:
-        print(f"Verification failed: {e}")
+        print(f"Audit Generation Failed: {e}")
 
 if __name__ == "__main__":
-    run_trade_audit_ai("test_scan.jpg", "Large Truck Tyres")
+    # Simulate a manifest with the sensitive info you mentioned
+    sample_manifest = """
+    Document: Bill of Lading #44592
+    Goods: Industrial Tyres (HS 4011)
+    Exporter: Global Rubber Ltd (Origin: Brazil)
+    Weight: 12,500 KG | Value: $45,000
+    """
+    generate_multimodal_audit("cargo_scan.jpg", sample_manifest)
