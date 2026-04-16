@@ -1,0 +1,4 @@
+ultralytics
+google-genai
+opencv-python-headless
+Pillow
