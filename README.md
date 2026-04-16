@@ -1,29 +1,27 @@
 # Customs Consignment Audit AI
 
-**Smart Thankgod** *Chief Superintendent of Customs* *MSc Computer Science Researcher — University of York* *Certified Image Analyst (UK Border Force Trained)*
+**Smart Thankgod** *Chief Superintendent of Customs* | *MSc Computer Science Researcher — University of York* | *Certified Image Analyst (UK Border Force Trained)*
 
 ---
 
-## 🛡️ Project Overview
-This repository hosts the development prototype for **Decision Intelligence** in cargo security. The system integrates real-time object detection with generative reasoning to automate the verification of shipping manifests against X-ray imagery.
+## 🛡️ Operational Impact: Automation vs. Manual Audit
+The core mission of this project is to solve the "Information Overload" in Customs logistics. Manual verification of shipping documents—**Bill of Lading, Packing List, Invoice, CCVO, and Manifests**—is time-intensive and prone to human oversight.
 
-## 🔬 Research Methodology: CNN vs. Transformer
-My current research benchmarks different architectures for Non-Intrusive Inspection (NII):
-* **YOLOv8/YOLO12 (CNN):** Our current baseline, utilized for its high inductive bias and efficiency on the current domain-specific dataset.
-* **RT-DETR (ViT):** The future target for this project. Once the dataset scales, we will utilize **RT-DETR** for its **Global Context Attention** and **NMS-free** end-to-end detection, which is superior for resolving overlapping items in dense containers.
+### ⚡ Speed-to-Intelligence
+This AI framework extracts and cross-references critical data points in **seconds**, a task that traditionally takes officers significantly longer. The system focuses on:
+* **Regulatory Compliance:** HS Codes, Country of Origin, and Country of Dispatch.
+* **Economic Protection:** Unit Price, Total Value of Goods, and Quantity.
+* **Logistics Accuracy:** Gross/Net Weight, Exporter/Importer details, and Unit of Measurement.
+
+## 🚀 Prototype & Live Demo
+- **Current Live Demo:** [Trade Audit AI (Logic Alpha)](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
+- **Demo Scope:** This version demonstrates the **Automated Document Intelligence** module, showing how AI reads and analyzes complex manifest data instantly.
+- **Roadmap:** Integration of the Multimodal Image Analysis module (X-ray scanning) is currently in development.
+
+## 🔬 Research Methodology
+* **CNN Baseline:** YOLOv8/YOLO12 utilized for local feature extraction on a **1,230-image augmented dataset** (480 original real-world NII scans).
+* **Transformer Target:** **RT-DETR (ViT)** implementation for global context attention and NMS-free end-to-end detection.
 
 ## 📄 Data Availability & Ethics
-**Notice:** The project utilizes a unique dataset of **1,230+ real-world anonymized X-ray scans** from the Nigeria Customs Service.
-- **Dataset Status:** Restricted. Imagery and ground-truth labels are withheld to protect research integrity for upcoming **IEEE publication**.
-- **Model Weights:** The `best.pt` weights are kept private to prevent unauthorized replication of research results.
-- **Inquiries:** Contact the author at [muekarasmartthankgod@gmail.com](mailto:muekarasmartthankgod@gmail.com).
-
-## 🚀 Impact & Traction
-- **Global Interest:** Significant traffic with over 130+ clones in recent development cycles.
-- **Operational Logic:** Detection thresholds and reasoning prompts are informed by professional **UK Border Force** image analysis standards.
-
----
-
-## 📫 Connect
-- **LinkedIn:** [Smart Thankgod](https://www.linkedin.com/in/smart-thankgod-893ab3371)
-- **Live Demo:** [Trade Audit AI Application](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
+**Notice:** This research utilizes a unique dataset of **480 original real-world anonymized X-ray scans** from the Nigeria Customs Service. 
+- **Integrity:** Raw imagery and weights are restricted to protect the "first-to-publish" integrity for upcoming **IEEE journal submission**.
