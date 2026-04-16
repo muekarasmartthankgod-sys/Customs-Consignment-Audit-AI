@@ -1,37 +1,29 @@
-# Trade Audit AI: Multimodal Consignment Verification
+# Customs Consignment Audit AI
 
-**Smart Thankgod** *Chief Superintendent of Customs | MSc Computer Science Researcher, University of York*
+**Smart Thankgod** *Chief Superintendent of Customs* *MSc Computer Science Researcher — University of York* *Certified Image Analyst (UK Border Force Trained)*
 
 ---
 
 ## 🛡️ Project Overview
-This repository contains a prototype for **Decision Intelligence** in customs logistics. The system bridges the gap between physical inspection and digital documentation by combining **YOLOv8** computer vision with **Gemini 2.0 Flash** vision-language reasoning.
+This repository hosts the development prototype for **Decision Intelligence** in cargo security. The system integrates real-time object detection with generative reasoning to automate the verification of shipping manifests against X-ray imagery.
 
-### Key Features
-- **Object Detection:** Localizes and classifies items in X-ray imagery.
-- **Spatial Reasoning:** Calculates cargo scale (Industrial vs. Passenger) relative to container volume.
-- **Automated Audit:** Cross-references vision data with shipping manifests to detect Fraud or Non-Conformity.
+## 🔬 Research Methodology: CNN vs. Transformer
+My current research benchmarks different architectures for Non-Intrusive Inspection (NII):
+* **YOLOv8/YOLO12 (CNN):** Our current baseline, utilized for its high inductive bias and efficiency on the current domain-specific dataset.
+* **RT-DETR (ViT):** The future target for this project. Once the dataset scales, we will utilize **RT-DETR** for its **Global Context Attention** and **NMS-free** end-to-end detection, which is superior for resolving overlapping items in dense containers.
 
----
+## 📄 Data Availability & Ethics
+**Notice:** The project utilizes a unique dataset of **1,230+ real-world anonymized X-ray scans** from the Nigeria Customs Service.
+- **Dataset Status:** Restricted. Imagery and ground-truth labels are withheld to protect research integrity for upcoming **IEEE publication**.
+- **Model Weights:** The `best.pt` weights are kept private to prevent unauthorized replication of research results.
+- **Inquiries:** Contact the author at [muekarasmartthankgod@gmail.com](mailto:muekarasmartthankgod@gmail.com).
 
-## 📄 Data Availability & Research Integrity
-**Notice:** This project utilizes a domain-specific dataset of **350+ anonymized real-world X-ray scans** from the Nigeria Customs Service.
-
-To maintain research integrity for upcoming **IEEE publication**:
-- **Dataset Status:** Imagery and ground-truth labels are currently **restricted**.
-- **Weights:** Trained model weights (`best.pt`) are not included in the public repository to prevent unauthorized replication before publication.
-- **Inquiries:** For academic benchmarking or collaboration, please contact the author at [muekarasmartthankgod@gmail.com](mailto:muekarasmartthankgod@gmail.com).
-
----
-
-## 🚀 Getting Started
-1. **Clone the repo:** `git clone https://github.com/muekarasmartthankgod-sys/Customs-Consignment-Audit-AI.git`
-2. **Install dependencies:** `pip install -r requirements.txt`
-3. **Set API Key:** Ensure your `GEMINI_API_KEY` is set in your environment variables.
-4. **Run Audit:** `python audit_engine.py`
+## 🚀 Impact & Traction
+- **Global Interest:** Significant traffic with over 130+ clones in recent development cycles.
+- **Operational Logic:** Detection thresholds and reasoning prompts are informed by professional **UK Border Force** image analysis standards.
 
 ---
 
-## 🤝 Connect
+## 📫 Connect
 - **LinkedIn:** [Smart Thankgod](https://www.linkedin.com/in/smart-thankgod-893ab3371)
-- **Portfolio:** [Trade Audit AI Live Demo](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
+- **Live Demo:** [Trade Audit AI Application](https://trade-audit-ai-kqefxmftigyq4lectascj2.streamlit.app/)
